@@ -23,7 +23,7 @@
     <header class="topbar">
       <a class="wordmark" href="index.html" aria-label="Utkarsh Upadhyay, home"><span class="mark">U</span><span>UTKARSH UPADHYAY</span></a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#work">Selected work</a><a href="#about">About</a>
+        <a href="#work">Selected work</a><a href="#about">About</a><a href="activity.html">Daily activity</a>
         <a class="nav-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
@@ -59,22 +59,22 @@
       <section class="section" id="work" aria-labelledby="work-title">
         <div class="section-head">
           <div><div class="eyebrow">01 / Selected work</div><h2 id="work-title">Built to make<br>complexity visible.</h2></div>
-          <p class="section-intro">Two hands-on portfolio demos explore manufacturing operations and grounded knowledge retrieval. Both use synthetic data and run without paid services.</p>
+          <p class="section-intro">Two runnable industrial software demos pair shop-floor operations with evidence-grounded procedure search. Their local APIs and simulators use fictional data; GitHub Pages hosts read-only previews.</p>
         </div>
         <div class="project-grid">
           <a class="project-card" href="projects/operations-monitor/index.html">
             <div class="card-top"><span class="card-index">PROJECT / 01</span><span>INDUSTRIAL DATA</span></div>
             <div class="card-art" aria-hidden="true"><svg viewBox="0 0 120 100"><path d="M5 75H29V60H51V46H73V31H94V17H115"/><path class="soft" d="M5 85H115M5 12V85"/><circle cx="29" cy="60" r="3"/><circle cx="51" cy="46" r="3"/><circle cx="73" cy="31" r="3"/><circle cx="94" cy="17" r="3"/></svg></div>
             <h3>Manufacturing Operations Monitor</h3>
-            <p>A live-feeling SCADA dashboard for line health, station state, throughput, and quality trends, backed by a self-contained synthetic production model.</p>
-            <div class="tags"><span class="tag">SCADA CONCEPT</span><span class="tag">SQL MODEL</span><span class="tag">DATA VISUALIZATION</span></div>
+            <p>A shop-floor operations system with a persisted telemetry store, a local JSON API, a background simulator, OEE calculations, alarm acknowledgement, and a live dashboard.</p>
+            <div class="tags"><span class="tag">PYTHON API</span><span class="tag">SQLITE + POSTGRESQL MODEL</span><span class="tag">SIMULATED IIOT</span></div>
             <div class="card-foot"><span>Open interactive demo</span><span>↗</span></div>
           </a>
           <a class="project-card" href="projects/industrial-knowledge-assistant/index.html">
             <div class="card-top"><span class="card-index">PROJECT / 02</span><span>AI / KNOWLEDGE SYSTEMS</span></div>
             <div class="card-art" aria-hidden="true"><svg viewBox="0 0 120 100"><circle cx="60" cy="49" r="32"/><circle class="soft" cx="60" cy="49" r="20"/><circle cx="60" cy="49" r="5"/><path d="M60 17V3M87 35l15-9M87 63l15 9M60 81v14M33 63l-15 9M33 35l-15-9"/><circle cx="60" cy="3" r="2"/><circle cx="102" cy="26" r="2"/><circle cx="102" cy="72" r="2"/></svg></div>
             <h3>Industrial Knowledge Assistant</h3>
-            <p>A local RAG-style prototype that searches a small library of sample procedures and returns relevant passages with clear source citations.</p>
+            <p>A citation-first industrial knowledge service with validated document ingestion, intent routing, ranked retrieval, source references, and a local API.</p>
             <div class="tags"><span class="tag">PYTHON CONCEPTS</span><span class="tag">RETRIEVAL</span><span class="tag">GROUNDED ANSWERS</span></div>
             <div class="card-foot"><span>Ask the knowledge assistant</span><span>↗</span></div>
           </a>
@@ -103,6 +103,13 @@
         </div>
       </section>
 
+      <section class="section" id="activity" aria-labelledby="activity-card-title">
+        <div class="contact-panel activity-card-panel">
+          <div><div class="eyebrow">03 / Open work log</div><h2 id="activity-card-title">Follow the work as it happens.</h2><p>Browse public GitHub pushes and commits, then see the daily LeetCode questions and notes I choose to share.</p></div>
+          <a class="button button-primary" href="activity.html">Open daily activity ↗</a>
+        </div>
+      </section>
+
       <section class="section" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
           <div><div class="eyebrow">03 / Find me elsewhere</div><h2 id="contact-title">Let’s connect the dots.</h2><p>For a conversation about industrial software, data, or applied AI, reach out by email or visit my profiles.</p></div>
@@ -112,7 +119,7 @@
       </section>
     </main>
 
-    <footer class="footer"><span>© <span id="year">2026</span> Utkarsh Upadhyay</span><div class="footer-links"><a href="projects/operations-monitor/index.html">Operations monitor</a><a href="projects/industrial-knowledge-assistant/index.html">Knowledge assistant</a><a data-profile-github href="#" hidden>GitHub ↗</a></div></footer>
+    <footer class="footer"><span>© <span id="year">2026</span> Utkarsh Upadhyay</span><div class="footer-links"><a href="activity.html">Daily activity</a><a href="projects/operations-monitor/index.html">Operations monitor</a><a href="projects/industrial-knowledge-assistant/index.html">Knowledge assistant</a><a data-profile-github href="#" hidden>GitHub ↗</a></div></footer>
   </div>
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Person","name":"Utkarsh Upadhyay","jobTitle":"Programmer Analyst","address":{"@type":"PostalAddress","addressLocality":"Kolkata","addressCountry":"IN"},"url":"https://blaze99git.github.io/html-portfolio/","sameAs":["https://github.com/Blaze99git","https://www.linkedin.com/in/utkarsh-upadhyay-b8b1a6191/","https://leetcode.com/u/Utkarsh_0320/"]}

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101311">
+  <meta name="description" content="A public activity monitor for Utkarsh Upadhyay's GitHub work and LeetCode practice log.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Daily Activity — Utkarsh Upadhyay">
+  <meta property="og:description" content="Public GitHub pushes and commits, alongside a transparent daily LeetCode practice log.">
+  <meta property="og:url" content="https://blaze99git.github.io/html-portfolio/activity.html">
+  <link rel="canonical" href="https://blaze99git.github.io/html-portfolio/activity.html">
+  <title>Daily Activity — Utkarsh Upadhyay</title>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/projects.css">
+  <link rel="stylesheet" href="assets/css/activity.css">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script defer src="site-config.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/activity.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Utkarsh Upadhyay, home"><span class="mark">U</span><span>UTKARSH UPADHYAY</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html#work">Projects</a><a href="index.html#about">About</a>
+        <a href="activity.html" aria-current="page">Daily activity</a>
+        <a class="nav-contact" href="index.html#contact">Connect <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="activity-page">
+      <section class="activity-hero" aria-labelledby="activity-title">
+        <div>
+          <div class="eyebrow">OPEN WORK LOG / 01</div>
+          <h1 id="activity-title">What I’m building<br><span>and learning.</span></h1>
+          <p>Recent public GitHub pushes and commits, next to a daily LeetCode log with the problem, status, and what I learned.</p>
+        </div>
+        <div class="activity-clock"><span class="activity-pulse" aria-hidden="true"></span><span>PUBLIC ACTIVITY MONITOR</span><time id="local-date"></time></div>
+      </section>
+
+      <section class="activity-section" aria-labelledby="github-title">
+        <div class="activity-section-head">
+          <div><div class="eyebrow">01 / Engineering in public</div><h2 id="github-title">GitHub activity</h2></div>
+          <a class="button" data-profile-github href="https://github.com/Blaze99git" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a>
+        </div>
+        <div class="activity-metrics" aria-live="polite">
+          <article class="activity-metric"><span>PUBLIC PUSHES · 30 DAYS</span><strong id="push-count">—</strong></article>
+          <article class="activity-metric"><span>COMMITS IN PUSHES</span><strong id="commit-count">—</strong></article>
+          <article class="activity-metric"><span>LAST PUBLIC PUSH</span><strong id="latest-push">Loading</strong></article>
+        </div>
+        <section class="activity-panel contribution-panel" aria-label="Public push activity calendar">
+          <div class="panel-head"><div><div class="panel-title">Daily push activity</div><div class="panel-note">PUBLIC EVENTS ONLY · LAST 35 DAYS</div></div><span class="panel-note" id="github-updated">Fetching GitHub events…</span></div>
+          <div class="activity-calendar" id="activity-calendar" aria-live="polite"></div>
+          <div class="calendar-legend"><span>Fewer</span><i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i><i class="level-4"></i><span>More pushes</span></div>
+        </section>
+        <section class="activity-panel push-panel" aria-labelledby="pushes-title">
+          <div class="panel-head"><div><div class="panel-title" id="pushes-title">Recent pushes and commits</div><div class="panel-note">REPOSITORY · BRANCH · COMMIT MESSAGE</div></div><span class="panel-note" id="pushes-count">LOADING</span></div>
+          <div class="push-list" id="push-list" aria-live="polite"><p class="activity-empty">Reading recent public activity from GitHub…</p></div>
+        </section>
+        <p class="activity-footnote">This feed reads up to 100 of GitHub’s latest public events and counts push events from the last 30 days. Private activity is not visible here, and GitHub may take time to publish new events.</p>
+      </section>
+
+      <section class="activity-section" aria-labelledby="leetcode-title">
+        <div class="activity-section-head">
+          <div><div class="eyebrow">02 / Daily problem solving</div><h2 id="leetcode-title">LeetCode practice</h2></div>
+          <a class="button" data-profile-leetcode href="https://leetcode.com/u/Utkarsh_0320/" target="_blank" rel="noopener noreferrer">Open LeetCode ↗</a>
+        </div>
+        <div class="leetcode-overview">
+          <div class="leetcode-summary"><span>LOGGED PROBLEMS · 30 DAYS</span><strong id="leetcode-total">0</strong><span id="leetcode-streak">Start by logging a problem you worked on.</span></div>
+          <div class="challenge-callout"><div><span class="eyebrow">TODAY’S QUESTION</span><h3>Daily LeetCode challenge</h3><p>Open the problem on LeetCode, then record the problem, result, and key learning below.</p></div><a class="button button-primary" href="https://leetcode.com/problemset/" target="_blank" rel="noopener noreferrer">Find today’s problem ↗</a></div>
+        </div>
+        <section class="activity-panel study-panel" aria-labelledby="study-title">
+          <div class="panel-head"><div><div class="panel-title" id="study-title">Problem log</div><div class="panel-note">PROBLEM · STATUS · WHAT I LEARNED</div></div><a class="log-entry-link" href="https://github.com/Blaze99git/html-portfolio/actions/workflows/leetcode-log.yml" target="_blank" rel="noopener noreferrer">+ Log a problem on GitHub ↗</a></div>
+          <div class="study-list" id="study-list" aria-live="polite"><p class="activity-empty">Loading practice entries…</p></div>
+        </section>
+        <p class="activity-footnote">LeetCode entries are written by me through a GitHub Actions form and become public with the portfolio update. The site does not scrape private account data.</p>
+      </section>
+    </main>
+
+    <footer class="footer activity-footer">
+      <span>© <span id="year">2026</span> Utkarsh Upadhyay</span>
+      <div class="footer-links"><a href="index.html">Portfolio</a><a href="projects/operations-monitor/index.html">Operations monitor</a><a href="projects/industrial-knowledge-assistant/index.html">Knowledge assistant</a><a data-profile-github href="https://github.com/Blaze99git">GitHub ↗</a><a data-profile-linkedin href="https://www.linkedin.com/in/utkarsh-upadhyay-b8b1a6191/">LinkedIn ↗</a><a data-profile-leetcode href="https://leetcode.com/u/Utkarsh_0320/">LeetCode ↗</a></div>
+    </footer>
+  </div>
+</body>
+</html>

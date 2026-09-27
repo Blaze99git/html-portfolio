@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ROOT_FILES = ["index.html", "site-config.js", ".nojekyll", "robots.txt", "sitemap.xml", "404.html", "about.html", "contact.html"]
+ROOT_FILES = ["index.html", "activity.html", "site-config.js", ".nojekyll", "robots.txt", "sitemap.xml", "404.html", "about.html", "contact.html"]
 PROJECT_FILES = {
     "operations-monitor": ["index.html", "app.js", "README.md", "sql/schema.sql", "sql/queries.sql", "sql/sample_data.sql"],
     "industrial-knowledge-assistant": ["index.html", "app.js", "README.md", "data/knowledge_base.json"],
@@ -25,6 +25,7 @@ def build_site(output: Path) -> Path:
     for name in ROOT_FILES:
         shutil.copy2(ROOT / name, output / name)
     shutil.copytree(ROOT / "assets", output / "assets", dirs_exist_ok=True)
+    shutil.copytree(ROOT / "data", output / "data", dirs_exist_ok=True)
     for project, files in PROJECT_FILES.items():
         source_dir = ROOT / "projects" / project
         target_dir = output / "projects" / project

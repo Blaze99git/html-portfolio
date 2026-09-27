@@ -1,0 +1,80 @@
+name: Log LeetCode practice and update portfolio
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Date worked on (YYYY-MM-DD, defaults to today in India)
+        required: false
+        type: string
+      title:
+        description: Problem title
+        required: true
+        type: string
+      url:
+        description: LeetCode problem URL
+        required: false
+        type: string
+      status:
+        description: Current result
+        required: true
+        type: choice
+        options:
+          - solved
+          - attempted
+          - revisit
+      reflection:
+        description: What I learned or want to remember (shown publicly)
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Save the submitted practice entry
+        env:
+          STUDY_DATE: ${{ inputs.date }}
+          STUDY_TITLE: ${{ inputs.title }}
+          STUDY_URL: ${{ inputs.url }}
+          STUDY_STATUS: ${{ inputs.status }}
+          STUDY_REFLECTION: ${{ inputs.reflection }}
+        run: python scripts/log_leetcode.py
+      - name: Commit the public learning log
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/leetcode-log.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Log LeetCode practice"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+      - name: Build portfolio
+        run: python scripts/build_site.py --output "$RUNNER_TEMP/site"
+      - name: Validate portfolio links
+        run: python scripts/check_site.py --root "$RUNNER_TEMP/site"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ runner.temp }}/site
+      - name: Deploy updated activity page
+        id: deployment
+        uses: actions/deploy-pages@v5

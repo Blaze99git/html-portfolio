@@ -1,53 +1,56 @@
 # Utkarsh Upadhyay — portfolio
 
-Professional portfolio and project demos for [GitHub Pages](https://blaze99git.github.io/html-portfolio/). The static site has no third-party runtime dependencies. Project examples are original, use synthetic data and fictional documents, and demonstrate engineering practices around interactive dashboards and evidence-based retrieval.
+Professional portfolio and industrial project demos for https://blaze99git.github.io/html-portfolio/. The public portfolio is static; local projects include runnable Python APIs and use fictional documents or generated plant telemetry.
 
 ## Profile links
 
-- Portfolio: [blaze99git.github.io/html-portfolio](https://blaze99git.github.io/html-portfolio/)
-- GitHub: [Blaze99git](https://github.com/Blaze99git)
-- LinkedIn: [Utkarsh Upadhyay](https://www.linkedin.com/in/utkarsh-upadhyay-b8b1a6191/)
-- LeetCode: [Utkarsh_0320](https://leetcode.com/u/Utkarsh_0320/)
-- Email: [upadhyayutkarsh484@gmail.com](mailto:upadhyayutkarsh484@gmail.com)
+- Portfolio: https://blaze99git.github.io/html-portfolio/
+- Daily activity: https://blaze99git.github.io/html-portfolio/activity.html
+- GitHub: https://github.com/Blaze99git
+- LinkedIn: https://www.linkedin.com/in/utkarsh-upadhyay-b8b1a6191/
+- LeetCode: https://leetcode.com/u/Utkarsh_0320/
+- Email: upadhyayutkarsh484@gmail.com
 
-The home page and project pages link back to these profiles and to the corresponding project source folders in this repository. `site-config.js` is the single place to update these URLs.
+The home page, activity page, and project pages link back to these profiles and to the project source folders in this repository. site-config.js is the shared source for profile URLs.
 
 ## Projects
 
-- [Manufacturing Operations Monitor](projects/operations-monitor/README.md): responsive dashboard simulation with an OEE view, station and alert controls, CSV export, and PostgreSQL schema and reporting queries.
-- [Industrial Knowledge Assistant](projects/industrial-knowledge-assistant/README.md): citation-first retrieval prototype with deterministic document ingestion, intent routing, a browser version, and an optional local Python API.
+- Manufacturing Operations Monitor: locally runnable JSON API, background simulated telemetry, SQLite persistence, OEE and quality calculations, alert acknowledgement, reporting UI, and PostgreSQL reference schema. See projects/operations-monitor/README.md.
+- Industrial Knowledge Assistant: citation-first local retrieval service with deterministic document ingestion, intent routing, evidence ranking, a browser preview, and a Python API. See projects/industrial-knowledge-assistant/README.md.
 
-## Run and validate locally
+## Run the portfolio and project demos
 
-Serve the repository root to try the static portfolio and both project pages:
+Serve the repository root to try the static portfolio and browser previews:
 
-```bash
-python3 -m http.server 8000
-```
+    python3 -m http.server 8000
 
-Open `http://127.0.0.1:8000/`. The assistant page uses its browser-local retriever in this mode. To run the Python API version instead, stop the first server and run:
+Open http://127.0.0.1:8000/. The assistant page uses its browser-local retriever in this mode. To run the Python retrieval API, stop the root server and run:
 
-```bash
-python3 projects/industrial-knowledge-assistant/run_demo.py
-```
+    python3 projects/industrial-knowledge-assistant/run_demo.py
 
-The commands below regenerate the knowledge base, run unit tests and site-link checks, and build the browser-safe Pages artifact outside the repository:
+The operations monitor has a separate local API, database, and simulator:
 
-```bash
-python3 projects/industrial-knowledge-assistant/ingest.py
-python3 -m unittest discover -s tests -v
-python3 scripts/check_site.py
-python3 scripts/build_site.py --output /tmp/portfolio-site
-```
+    python3 projects/operations-monitor/server.py
 
-No package installation, API key, database, paid service, or external model is required for the demos.
+Open http://127.0.0.1:8100/projects/operations-monitor/ while it runs. The SQLite database is local and ignored by Git. You can keep the root preview on port 8000 and the operations API on port 8100 at the same time.
+
+The project maintenance commands regenerate the knowledge base, run the current checks, and build a browser-safe Pages artifact outside the repository:
+
+    python3 projects/industrial-knowledge-assistant/ingest.py
+    python3 -m unittest discover -s tests -v
+    python3 scripts/check_site.py
+    python3 scripts/build_site.py --output /tmp/portfolio-site
+
+The projects use Python’s standard library and need no package installation or API keys. GitHub Pages hosts the portfolio and static previews for free; it does not run the project APIs or simulators continuously.
+
+## Activity monitor and daily LeetCode log
+
+The daily activity page reads recent public push events from GitHub in the visitor’s browser. It cannot show private activity, and the events feed may lag. LeetCode problem titles, links, statuses, and optional reflections are logged through the “Log LeetCode practice and update portfolio” workflow under GitHub Actions. Each entry is published on the portfolio, so submit only details you want public. The workflow commits the entry and deploys the updated static page.
 
 ## GitHub Pages deployment
 
-The repository includes GitHub Actions workflows for quality checks and GitHub Pages deployment. On the repository's **Settings → Pages** page, set **Build and deployment → Source** to **GitHub Actions**. Each push to `main` then builds and deploys the static site. GitHub Pages is available for public repositories on GitHub Free; see the [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages).
-
-The generated Pages artifact excludes the Python server and tests. It includes the HTML, CSS, JavaScript, SQL examples, and fictional source documents used by the browser demo.
+The repository includes GitHub Actions workflows for quality checks and GitHub Pages deployment. On the repository’s Settings → Pages page, set Build and deployment → Source to GitHub Actions. Each push to main then builds and deploys the static site. The generated Pages artifact excludes Python APIs, simulator code, and tests. It includes the HTML, CSS, JavaScript, readme files, sample schemas, fictional source documents, and public learning log.
 
 ## Project boundaries
 
-The operations dashboard uses generated sample readings and does not connect to equipment or plant systems. Assistant documents are fictional and are not real operating instructions. Neither demo includes employer code, customer data, credentials, or a production integration. The portfolio omits the phone number from the supplied resume.
+The operations monitor uses generated sample readings and does not connect to equipment or plant systems. Assistant documents are fictional and are not real operating instructions. Neither demo includes employer code, customer data, credentials, or a production integration. The portfolio omits the phone number from the supplied resume.

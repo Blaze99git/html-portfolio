@@ -1,23 +1,34 @@
 # Manufacturing Operations Monitor
 
-An original portfolio simulation of a small manufacturing cell. It combines an interactive browser dashboard with a PostgreSQL example model for stations, work orders, telemetry, production intervals, quality checks, and events. All values and station names are invented for this demo.
+A complete local-first industrial operations demo: a Python JSON API, a background telemetry simulator, a persistent SQLite store, OEE and quality summaries, station state, alert acknowledgement, and a responsive browser dashboard. Everything is generated from fictional plant data.
 
-## Run the browser demo
+## Run the full local system
 
-From the portfolio repository root:
+From the portfolio repository root, start the API and simulator:
 
-```bash
-python3 -m http.server 8000
-```
+    python3 projects/operations-monitor/server.py
 
-Open `http://127.0.0.1:8000/projects/operations-monitor/`. The page models production rate, availability/performance/quality components and OEE, first-pass yield, station state, and recent alerts. Try selecting a time range, filtering events by station, acknowledging a sample alert, pausing the simulation, and exporting a CSV summary. State resets when you reload; the dashboard has no database or remote service.
+Open http://127.0.0.1:8100/projects/operations-monitor/. The first start creates the local SQLite database and seeds eight hours of sample telemetry. After startup, the simulator records another station reading every five seconds. The dashboard switches to the API automatically, refreshes its KPIs and station/event lists, and persists alert acknowledgements. The database is stored at projects/operations-monitor/data/operations.sqlite3 and excluded from Git.
 
-## PostgreSQL example
+To use only the static browser preview, serve the repository root with python3 -m http.server 8000 and open http://127.0.0.1:8000/projects/operations-monitor/. GitHub Pages runs the same browser preview. It generates clearly labeled sample values in the browser because Pages does not run the Python service.
 
-The `sql/` directory contains a normalized schema, generated sample rows, and example analytical queries. Create a local database, then apply `schema.sql`, `sample_data.sql`, and `queries.sql` in that order. The queries calculate shift-window OEE from clipped station-state intervals, hourly first-pass yield, and a station's latest events.
+## API
 
-This is a reference model, not a complete MES or validated plant implementation. Before adapting it, define local event semantics, shift calendars, planned downtime, ideal cycle time, rework rules, access controls, retention, and data-quality checks.
+All responses are JSON. The local server binds to 127.0.0.1:8100 and exposes:
 
-## Boundaries
+- GET /api/v1/health — service state and simulation marker.
+- GET /api/v1/summary?window=30m|2h|8h — production, availability, performance, quality, OEE, and unacknowledged warnings.
+- GET /api/v1/metrics?window=30m|2h|8h — 15-minute production and quality chart buckets.
+- GET /api/v1/stations — station state and stored good-unit counts.
+- GET /api/v1/events?limit=20 — newest events, with a bounded limit of 1–100.
+- POST /api/v1/alerts/{event_id}/ack — acknowledge a sample warning.
 
-The browser simulation generates its values in JavaScript. SQL sample rows are fictional. There is no PLC, SCADA, Ignition, plant network, or production-database connection, and the project contains no employer or customer source material.
+The service uses only Python’s standard library. SQL statements are parameterized; the SQLite schema enforces key relationships, allowed states, and nonnegative counters. The simulator retains up to 30 days of local telemetry and events.
+
+## PostgreSQL reference model
+
+The sql directory contains a separate normalized PostgreSQL example for stations, work orders, telemetry, state intervals, production counts, and events. Apply schema.sql, sample_data.sql, and queries.sql to explore its reporting examples. It is a reference model; the runnable API uses SQLite so the demo needs no database installation.
+
+## Industrial scope and boundaries
+
+This is a portfolio system design exercise, not a validated MES or production-ready plant deployment. Its OEE figure is an illustrative estimate over generated samples, not a certified time-weighted calculation. The demo has no PLC, SCADA, Ignition gateway, MQTT broker, plant network, user authentication, or production database connection. It demonstrates API/data/UI boundaries and persisted operational workflows with synthetic data. Before adapting its concepts, define plant tag semantics, shift calendars, downtime rules, ideal cycle times, rework behavior, identity/access controls, retention, alarm policy, and data-quality validation.

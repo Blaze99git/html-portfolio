@@ -32,5 +32,10 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check assets/js/site.js
+          node --check assets/js/activity.js
           node --check projects/operations-monitor/app.js
           node --check projects/industrial-knowledge-assistant/app.js
+      - name: Check Python service syntax
+        run: |
+          python -m py_compile projects/operations-monitor/server.py
+          python -m py_compile scripts/log_leetcode.py
