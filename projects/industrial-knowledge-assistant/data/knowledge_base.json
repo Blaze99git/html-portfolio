@@ -1,0 +1,82 @@
+[
+  {
+    "id": "OPS-001",
+    "title": "Shift start and handover checklist",
+    "category": "operations",
+    "section": "Starting a shift",
+    "revision": "1.0",
+    "source_path": "OPS-001.md",
+    "content_sha256": "825ae235203ae3622a31aa9deb47de52efc5f443878b824544d5db72fe88bfbb",
+    "text": "At shift start, review the outgoing operator handover notes and open work orders. Confirm that the line status board matches the work area, check that required guards are in place, and verify the emergency stop circuit is reset by an authorized operator. Record the shift start time and any unresolved issue in the handover log. Do not restart a stopped station until its hold reason has been reviewed and cleared."
+  },
+  {
+    "id": "OPS-002",
+    "title": "Recording a station stop",
+    "category": "operations",
+    "section": "Downtime recording",
+    "revision": "1.0",
+    "source_path": "OPS-002.md",
+    "content_sha256": "2120562c499c48bcd0012d2896bbd30e5b90450cfc70e38492b1e92fd5dc543b",
+    "text": "When a station stops unexpectedly, record the event time, station identifier, work order, and observable symptom in the downtime log. Select the closest approved downtime category, then add a short factual note. Keep observation separate from suspected cause. Escalate a repeated stop to the shift lead and leave the event open until the station has been checked and the recovery is recorded."
+  },
+  {
+    "id": "OPS-003",
+    "title": "Quality hold and material segregation",
+    "category": "quality",
+    "section": "Nonconforming material",
+    "revision": "1.0",
+    "source_path": "OPS-003.md",
+    "content_sha256": "676fb2ae697badd4121edb2af2cecd6158a005664dcdca7e5d3ecaf9191cefa3",
+    "text": "If a unit does not meet an inspection requirement, place it on quality hold and identify it using the approved hold label. Keep the unit in the designated review area so it cannot re-enter normal flow. Record the work order, unit serial or trace identifier, inspection result, and time. Only an authorized quality representative can release or disposition a held unit."
+  },
+  {
+    "id": "OPS-004",
+    "title": "Compressed air pressure alarm response",
+    "category": "maintenance",
+    "section": "Utilities alarm",
+    "revision": "1.0",
+    "source_path": "OPS-004.md",
+    "content_sha256": "083cf6abf72602951b917240ceaa2f741c94f061419e36f910185486d89a70dc",
+    "text": "A low compressed-air pressure alarm can affect clamp and actuator behavior. Pause the affected station using the normal station control and notify the shift lead. Check the local gauge only if the area is safe and the operator is trained; do not adjust regulators or disconnect air lines. If the alarm remains active, record the pressure reading, station identifier, and alarm time, then call maintenance. Resume production only after the authorized person confirms stable pressure and the station passes its recovery check."
+  },
+  {
+    "id": "OPS-005",
+    "title": "Equipment lubrication inspection",
+    "category": "maintenance",
+    "section": "Planned maintenance",
+    "revision": "1.0",
+    "source_path": "OPS-005.md",
+    "content_sha256": "2b0868aa8164098f9de5eee7458c06b144c7f9c06df4e8bcd3ac13812f1b8dfc",
+    "text": "Perform lubrication inspections at the interval listed on the approved maintenance schedule. Before inspection, follow the site energy isolation procedure if access requires reaching into a guarded area. Use only the lubricant and amount specified by the equipment owner. Record the inspection date, equipment identifier, finding, and completion status in the maintenance record. Escalate leakage, unusual noise, heat, or damaged fittings instead of treating them as routine lubrication."
+  },
+  {
+    "id": "OPS-006",
+    "title": "Weld retry and parameter review",
+    "category": "quality",
+    "section": "Weld cycle exception",
+    "revision": "1.0",
+    "source_path": "OPS-006.md",
+    "content_sha256": "9f8e9d4f33d82ad86fa8f8e435a1fa12b5c27d6d9f93e9ba5bb8ec14443ccebd",
+    "text": "If a weld cycle returns a retry result, keep the unit in its current controlled location and follow the approved inspection plan for that product. Record the weld station, unit trace identifier, cycle time, retry count, and displayed result in the quality log. Do not change weld parameters or repeat a cycle outside the approved process. Notify the quality representative when the retry limit is reached, a trace result is missing, or the same condition repeats."
+  },
+  {
+    "id": "OPS-007",
+    "title": "PLC tag quality and stale values",
+    "category": "data",
+    "section": "Signal health",
+    "revision": "1.0",
+    "source_path": "OPS-007.md",
+    "content_sha256": "24be4e879d5c546ace5774a6326ddf8a2710c5f6affa3d53c26b7fb25e15fc84",
+    "text": "A dashboard value should be treated as stale when its source timestamp exceeds the configured freshness window or the PLC quality flag indicates an invalid sample. Display the latest timestamp and quality state with the value. Do not substitute a prior good reading without making its age visible. Log the tag name, source system, last update time, and quality code so the controls team can investigate the communication path."
+  },
+  {
+    "id": "OPS-008",
+    "title": "Unit traceability and final test",
+    "category": "quality",
+    "section": "End-of-line record",
+    "revision": "1.0",
+    "source_path": "OPS-008.md",
+    "content_sha256": "936bbfb93757de131da3db1d504503aa93621f1609d301e4efcdcf1257bb3a4d",
+    "text": "At final test, verify that the unit trace identifier is readable and associated with the active work order before recording the result. Save the test status, completion time, station identifier, and required measurement set. If a scan is missing or the work-order association does not match, stop the normal completion transaction and ask the shift lead to resolve the record. A successful test result without a trace association is not a complete record."
+  }
+]

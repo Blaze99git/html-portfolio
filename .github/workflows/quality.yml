@@ -1,0 +1,34 @@
+name: Quality checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Check generated knowledge base
+        run: |
+          python projects/industrial-knowledge-assistant/ingest.py
+          git diff --exit-code -- projects/industrial-knowledge-assistant/data/knowledge_base.json
+      - name: Validate retrieval and ingestion
+        run: python -m unittest discover -s tests -v
+      - name: Validate site links and anchors
+        run: python scripts/check_site.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/js/site.js
+          node --check projects/operations-monitor/app.js
+          node --check projects/industrial-knowledge-assistant/app.js

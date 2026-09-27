@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://blaze99git.github.io/html-portfolio/sitemap.xml

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101311">
+  <meta name="description" content="A local industrial knowledge retrieval demo with evidence passages and citations.">
+  <title>Industrial Knowledge Assistant — Utkarsh Upadhyay</title>
+  <link rel="stylesheet" href="../../assets/css/site.css"><link rel="stylesheet" href="../../assets/css/projects.css">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <script defer src="../../site-config.js"></script><script defer src="../../assets/js/site.js"></script>
+</head>
+<body><div class="grain" aria-hidden="true"></div><div class="project-wrap">
+  <header class="project-topbar"><a class="back-link" href="../../index.html"><span aria-hidden="true">←</span> UTKARSH / PORTFOLIO</a><nav class="project-toplinks" aria-label="Project navigation"><a href="../operations-monitor/index.html">Previous project ↗</a><a data-profile-github href="#" hidden>GitHub ↗</a></nav></header>
+  <a class="skip-link" href="#main-content">Skip to main content</a><main id="main-content">
+    <div class="project-heading"><div><div class="eyebrow">PROJECT 02 / AI & KNOWLEDGE SYSTEMS</div><h1>Industrial Knowledge Assistant</h1><p>A citation-first retrieval prototype for fictional operating procedures. Ask a question, inspect the matching passages, and see which parts of a small knowledge base support the response.</p></div><span class="demo-badge">Local RAG concept · sample docs</span></div>
+    <section class="assistant-layout" aria-label="Knowledge assistant demo">
+      <section class="surface assistant-main" aria-labelledby="assistant-title">
+        <div class="assistant-bar"><div class="assistant-title"><span class="assistant-mark" aria-hidden="true">K</span><span id="assistant-title">North Cell Knowledge Desk</span></div><span class="mode-label" id="engine-mode">LOCAL RETRIEVAL · NO EXTERNAL MODEL</span></div>
+        <div class="chat-body" id="chat-body" aria-live="polite" aria-relevant="additions">
+          <article class="chat-message assistant"><div class="chat-meta"><span>KNOWLEDGE DESK</span><span>READY</span></div><p>Hi. Ask about the sample operating procedures, quality checks, or maintenance notes. I’ll search the local demo library and show the passages behind each response.</p></article>
+          <article class="chat-message assistant"><div class="chat-meta"><span>SCOPE</span><span>8 SAMPLE DOCUMENTS</span></div><p class="answer-empty">This prototype retrieves and quotes relevant passages. It does not call an LLM, send prompts to a third party, or access plant systems.</p></article>
+        </div>
+        <div class="chat-input-area"><div class="prompt-chips" aria-label="Example questions"><button class="prompt-chip" type="button">What should I do after an air pressure alarm?</button><button class="prompt-chip" type="button">How is a weld retry recorded?</button><button class="prompt-chip" type="button">What are the shift handover steps?</button></div><form class="ask-form" id="ask-form"><label class="visually-hidden" for="question">Ask a question about the sample procedures</label><input id="question" name="question" autocomplete="off" maxlength="240" placeholder="Ask a question about the sample procedures…" required><button id="ask-button" type="submit">Ask ↗</button></form></div>
+      </section>
+      <aside class="assistant-side" aria-label="Retrieval details">
+        <section class="surface side-panel"><h2>Retrieval workflow</h2><div class="agent-steps"><div class="agent-step"><span class="step-number">01</span><div class="step-copy"><strong>Classify intent</strong><span>Route to a transparent local document category</span></div></div><div class="agent-step"><span class="step-number">02</span><div class="step-copy"><strong>Rank evidence</strong><span>Score matching sample passages lexically</span></div></div><div class="agent-step"><span class="step-number">03</span><div class="step-copy"><strong>Return citations</strong><span>Show excerpts with stable source identifiers</span></div></div></div></section>
+        <section class="surface side-panel"><h2>Local sample library</h2><div class="doc-list"><div class="doc-item"><span>OPS-001 · Start-up & handover</span><span>SOP</span></div><div class="doc-item"><span>OPS-004 · Compressed air</span><span>MAINT.</span></div><div class="doc-item"><span>OPS-006 · Weld retry log</span><span>QUALITY</span></div><div class="doc-item"><span>OPS-008 · Traceability checks</span><span>QUALITY</span></div><div class="doc-item"><span>+ 4 more sample notes</span><span>DEMO</span></div></div></section>
+        <section class="surface side-panel"><h2>Prototype boundaries</h2><p class="scope-note"><strong>Fictional content:</strong> all procedures and examples were written for this demonstration. The browser build uses a small local retrieval routine; a local Python API is included as an alternative runner. There is no connected model or production integration.</p><div class="project-tech"><span>PYTHON 3</span><span>RAG PATTERN</span><span>CITATIONS</span><span>LOCAL DATA</span></div></section>
+      </aside>
+    </section>
+    <section class="project-readme" aria-label="Project notes"><div class="readme-block"><h2>What this demonstrates</h2><p>Document discovery, lexical retrieval, relevance ranking, short evidence-backed responses, and visible source attribution. The same JSON knowledge base can be queried through the browser implementation or Python standard-library API.</p><div class="project-tech"><span>PYTHON</span><span>JSON</span><span>HTML / CSS / JS</span><span>TF-IDF STYLE RANKING</span></div></div><div class="readme-block"><h2>Run locally</h2><p>From the portfolio repository root, run <code>python3 projects/industrial-knowledge-assistant/run_demo.py</code>, then open <code>http://127.0.0.1:8000/projects/industrial-knowledge-assistant/</code>. No package install, API key, or external service is needed.</p></div></section>
+  </main>
+  <footer class="project-footer"><a href="../../index.html">← Back to portfolio</a><span>FICTIONAL DOCS / LOCAL RETRIEVAL</span><a data-project-repo="industrial-knowledge-assistant" href="#" hidden>View source ↗</a><a href="../operations-monitor/index.html">Operations monitor →</a></footer>
+</div><script src="app.js"></script></body></html>
