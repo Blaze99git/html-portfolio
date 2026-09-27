@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import argparse
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -79,4 +80,7 @@ def check_site(root: Path = ROOT) -> list[str]:
 
 
 if __name__ == "__main__":
-    raise SystemExit(1 if check_site() else 0)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT, help="static site directory to validate")
+    arguments = parser.parse_args()
+    raise SystemExit(1 if check_site(arguments.root.resolve()) else 0)
